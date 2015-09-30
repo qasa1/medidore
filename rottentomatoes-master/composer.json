@@ -1,0 +1,13 @@
+{
+  "name": "palantirnet/rottentomatoes",
+  "description": "Bridge API for talking to Rotten Tomatoes",
+  "license": "MIT",
+  "keywords": ["API", "REST", "Rotten Tomatoes"],
+  "require": {
+    "php": ">=5.3.3",
+    "guzzle/http": ">=3.3"
+  },
+  "autoload": {
+    "psr-0": { "PalantirNet\\RottenTomatoes": "src" }
+  }
+}
