@@ -1,19 +1,22 @@
 <?php
-require __DIR__ . "\bootstrap.php";
+require "bootstrap.php";
 
-
-
-# If we have no MID and no NAME, go back to search page
 if (empty($_GET["name"])) {
   header("Location: index.html");
   return;
 }
 
-$search = new \Imdb\TitleSearch(); // Optional $config parameter
-$results = $search->search($_GET["name"], [\Imdb\TitleSearch::MOVIE],1); // Restricting search by movies and 1 search result
 
+$title = $_GET['name'];
+$year = " ";
+$tomatoes = true;
+$title = urlencode($title);
 
+$json=file_get_contents("http://www.omdbapi.com/?t=$title&tomatoes=true");
+
+$details=json_decode($json);
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,24 +29,20 @@ $results = $search->search($_GET["name"], [\Imdb\TitleSearch::MOVIE],1); // Rest
 
   <head>
     <title>Search results for '<?php echo $_GET["name"] ?>'</title>
-    <style type="text/css">body,td,th,h2 { font-size:20px; font-family:sans-serif; } th { background-color:#ffb000; text-align:center;} h2 { text-align:center; font-size:15px; margin-top: 20px; margin-bottom:0; }</style>
+    <style type="text/css">body,td,th,h2 { font-size:20px; font-family:Arimo; } th { background-color:#ffb000; text-align:center;} h2 { text-align:center; font-size:15px; margin-top: 20px; margin-bottom:0; }</style>
   </head>
-
 
 
    <div id="background-image"></div>
    <div id="background-overlay"></div>
   
   <div id="overlay">
-    <table width="80%"align="center" border="1" style="border-collapse:collapse;margin-top:20px;">
-      <tr><th align="center">Details</th><th align="center">IMDB Rating</th><th align="center">Rotten tomatoes Rating</th></tr>
-      <?php foreach ($results as $res):?>
+    <table width="80%"align="left" style="border-collapse:collapse;margin-top:20px;margin-top:50px;">
+      
       <tr>
-            <td><a href="movie.php?mid=<?php echo $res->imdbid() ?>"><?php echo $res->title() ?></a></td>
-            <td align="center"style ="color:#ffb000;"><?php echo  $res->rating() ?></td>
-            <td align="center" style ="color:#ffb000;"><?php echo $res->rating() ?></td>
+            <td> <?php echo "<img style='margin-top:100px' src=\"$details->Poster\">"?></td>
+            <td ><?php echo "<h1 style='padding-bottom:none;margin-top:-75px'>". $details->Title."</h1>" ?> <?php echo "<span >".$details->Year."</span>" ?><br> <?php echo "<span style='maring-top:-50px'>".$details->Genre."</span>" ?><br><br><br><br> <?php echo "<img style ='' height='30' width='30' src=\"assets\imdb.png\">"?> <?php echo "<span style='margin-right:550px'>". $details->imdbRating."</span >" ?><br> <?php echo "<img height='30' width='40' src=\"assets\omatoes.png\">"?> <?php echo "<span style='margin-right:550px'>". $details->tomatoRating."</span>"?><br></td>
       </tr>
-      <?php endforeach ?>
     </table>
   </div>
 
@@ -51,4 +50,6 @@ $results = $search->search($_GET["name"], [\Imdb\TitleSearch::MOVIE],1); // Rest
 
 
 
-</html>
+
+
+

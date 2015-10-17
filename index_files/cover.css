@@ -27,7 +27,7 @@ form{
     transform-origin: 122.5px 300px;
     background: rgba(0, 0, 0, 0) url('22-jump-street.jpeg') no-repeat scroll 50% 50% / cover padding-box border-box;
     border: 0px none rgb(255, 255, 255);
-    font: normal normal normal normal 16px / 22.8571px Arimo, Arial, Helvetica, 'Lucida Grande', sans-serif;
+    font: normal normal normal normal 16px / 22.8571px 'Arimo', Arial, Helvetica, 'Lucida Grande', sans-serif;
     outline: rgb(255, 255, 255) none 0px;
  }
   
@@ -49,7 +49,7 @@ form{
     transform-origin: 122.5px 300px;
     background: rgba(0, 0, 0, 0) linear-gradient(rgba(29, 29, 29, 0.65098) 0px, rgb(29, 29, 29) 100%) repeat scroll 0% 0% / auto padding-box border-box;
     border: 0px none rgb(255, 255, 255);
-    font: normal normal normal normal 16px / 22.8571px Arimo, Arial, Helvetica, 'Lucida Grande', sans-serif;
+    font: normal normal normal normal 16px / 22.8571px 'Arimo', Arial, Helvetica, 'Lucida Grande', sans-serif;
     outline: rgb(255, 255, 255) none 0px;
 }/*#DIV_1*/
 
