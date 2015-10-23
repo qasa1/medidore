@@ -7,7 +7,7 @@ $tomatoes = true;
 $title = urlencode($title);
 
 
-$json=file_get_contents("http://api.themoviedb.org/3/search/movie?api_key=3d1dde58be22fd0bb5654af83c4597da&query=$title&search_type='ngram'");
+$json=file_get_contents("http://api.themoviedb.org/3/search/movie?api_key=myapikey&query=$title&search_type='ngram'");
 $json2=file_get_contents("http://api.themoviedb.org/3/configuration?api_key=3d1dde58be22fd0bb5654af83c4597da");
 $json3=file_get_contents("http://www.omdbapi.com/?t=$title&tomatoes=true");
 
