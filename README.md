@@ -1,6 +1,6 @@
 # Project Description
 
-The goal of this project was to create a website that fetches movie ratings from IMDB and Rotten tomatoes without all the extra information.<br>
+The goal of this project was to create a website that fetches movie ratings from IMDB and Rotten tomatoes without all the extra information and without the hassle of going to 2 different websites.<br>
 
 
 Built using:
