@@ -2,18 +2,19 @@
 require  "bootstrap.php";
 error_reporting(E_ERROR | E_PARSE);
 
-$title = $_GET['name'];
+$title = htmlspecialchars($_GET['name']);
 $tomatoes = true;
 $title = urlencode($title);
 
 
-$json=file_get_contents("http://api.themoviedb.org/3/search/movie?api_key=myapikey&query=$title&search_type='ngram'");
+$json=file_get_contents("https://api.themoviedb.org/3/search/movie?api_key=3d1dde58be22fd0bb5654af83c4597da&language=en-US&query=$title");
 $json2=file_get_contents("http://api.themoviedb.org/3/configuration?api_key=3d1dde58be22fd0bb5654af83c4597da");
-$json3=file_get_contents("http://www.omdbapi.com/?t=$title&tomatoes=true");
+$json3=file_get_contents("http://www.omdbapi.com/?t=$title&apikey=896c4aa2&tomatoes=true");
 
 $config= json_decode($json2,TRUE); //configuration settings from the movie db
 $details=json_decode($json,TRUE); //json from themoviedb
 $omdbInfo=json_decode($json3);    //json from omdb
+
 
 //Error checking the input field
 if (empty($_GET["name"]) ) {
